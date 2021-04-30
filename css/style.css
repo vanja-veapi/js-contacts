@@ -1,0 +1,175 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body
+{
+    background-color: #3da8ff;
+    min-height: 100vh;
+    font-family: 'Arial';
+}
+nav
+{
+    height: 100vh;
+    background-color: rgba(13, 110, 253, 0.5);
+    z-index: 98;
+}
+
+/*Anim nav*/
+.fade-in
+{
+    animation: fadeIn 0.6s;
+        -webkit-animation: fadeIn 0.6s;
+        -moz-animation: fadeIn 0.6s;
+}
+li
+{
+    list-style-type: none;
+    text-transform: uppercase;
+    font-size: 60px;
+    text-align: center;
+    transition: 0.3s;
+    font-weight: 600;
+}
+a::after
+{
+    border-bottom: 5px solid #fff;
+    content: '';
+    display: block;
+    width: 0;
+    -webkit-transition: width .3s;
+    transition: width .3s;
+   
+}
+a:hover::after
+{
+    width: 100%;
+    -webkit-transition: width .3s;
+    transition: width .3s;
+}
+
+
+
+
+.menu
+{
+    /* border: 3px solid white; */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    overflow: hidden;
+    z-index: 99;
+}
+.menu-btn-burger
+{
+    width: 50px;
+    height: 6px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(255, 101, 47, .2);
+    transition:  all 0.2s ease-in-out;
+}
+.menu-btn-burger::before,
+.menu-btn-burger::after
+{
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 6px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(255, 101, 47, .2);
+    transition:  all 0.2s ease-in-out;
+}
+.menu-btn-burger::before
+{
+    transform: translateY(-16px);
+}
+.menu-btn-burger::after
+{
+    transform: translateY(16px);
+}
+
+/* Animation */
+.menu.open .menu-btn-burger
+{
+    transform: translateX(-70px);
+    box-shadow: none;
+    background: transparent;
+}
+.menu.open .menu-btn-burger::before
+{
+    transform: rotate(45deg) translate(49px, -49px);
+    box-shadow: none;
+}
+.menu.open .menu-btn-burger::after
+{
+    transform: rotate(-45deg) translate(49px, 49px);
+}
+
+/*TABLE*/
+.container
+{
+    transition: 0.5s ease-in-out;
+}
+#list.container
+{
+    position: relative;
+}
+#list
+{
+    bottom: 3.5rem;
+}
+table
+{
+    background-color: rgba(255, 255, 255, 0.8);
+    /* border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2); */
+    /* backdrop-filter: blur(20px); */
+}
+.table>:not(caption)>*>*
+{
+    border-bottom-width: 0px;
+}
+
+#overflow
+{
+    height: 390px;
+    overflow: auto;
+}
+/*Make contact*/
+#make-contact
+{ 
+    /* bottom: 110%;  */
+    bottom: 1000px;
+}
+@keyframes fadeIn 
+{
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+  
+@-moz-keyframes fadeIn 
+{
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+@-webkit-keyframes fadeIn 
+{
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+@media screen and (max-width: 604px)
+{
+    #make-contact
+    {
+        left: 0 !important;
+    }
+}
