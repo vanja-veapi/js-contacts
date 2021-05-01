@@ -246,6 +246,9 @@ function makeContact(ime, prezime, telefon)
     let surname = document.querySelector("#surname");
     let mobilePhone = document.querySelector("#mobile-phone");
 
+    let nameSurnameRegEx = /^[A-ZŠĐČĆŽa-zšđčć]{2,20}$/;
+    let mobRegEx = /^[\d]{9,11}$/;
+
     if(ime === "" && prezime === "" && telefon === "")
     {
         errAll.classList.remove("invisible");
@@ -273,6 +276,19 @@ function makeContact(ime, prezime, telefon)
         console.log("Polje ime ne moze biti prazno");
         brojGresaka++;
     }
+    else
+    {
+        if(!nameSurnameRegEx.test(ime)) //per@
+        {
+            name.style.border = "1px solid #ff0000";
+            brojGresaka++;
+            console.log("GRESKA IME")   
+        }
+        else
+        {
+            name.style.border = "none";
+        }
+    }
 
     if(prezime === "")
     {
@@ -280,6 +296,19 @@ function makeContact(ime, prezime, telefon)
 
         console.log("Prezime ne moze biti prazno");
         brojGresaka++;
+    }
+    else
+    {
+        if(!nameSurnameRegEx.test(prezime))
+        {
+            surname.style.border = "1px solid #ff0000";
+            brojGresaka++;     
+            console.log("GRESKA IPREME")    
+        }
+        else
+        {
+            surname.style.border = "none";
+        }
     }
 
     if(telefon === "")
@@ -289,7 +318,21 @@ function makeContact(ime, prezime, telefon)
         console.log("Polje telefon ne moze biti prazno");
         brojGresaka++;
     }
+    else
+    {
+        if(!mobRegEx.test(telefon))
+        {
+            mobilePhone.style.border = "1px solid #ff0000";
+            brojGresaka++;
+            console.log("GRESKA TEL") 
+        }
+        else
+        {
+            mobilePhone.style = "none";
+        }
+    }
 
+    
     console.log(brojGresaka);
     if(brojGresaka === 0)
     {
@@ -363,18 +406,6 @@ function removeContact(paramId)
     
     let filtriranje = contactList.products.filter(e => e.id != paramId);
     contactList.products = filtriranje;
-    // console.log(filtriranje)
-
-    // let proba = filtriranje.splice(0, 1);
-    // for(let i = 0; i < contactList.products.length; i++)
-    // {
-    //     console.log(contactList.products[i]);
-    //     if(contactList.products[i].id == proba)
-    //     {
-    //         contactList.products.splice(0,1);
-    //     }
-    // }
-    // console.log(proba);
 
     //AKO SE u nasem nizu objekta nadje vrednost u promenljivoj proba (=== true) onda splice(0,1)
 
